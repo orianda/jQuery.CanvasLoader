@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/emma-strumpf/jQuery.CanvasLoader.git"
+    "url": "https://github.com/orianda/jQuery.CanvasLoader.git"
   },
   "keywords": [
     "jQuery",
@@ -18,9 +18,9 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/emma-strumpf/jQuery.CanvasLoader/issues"
+    "url": "https://github.com/orianda/jQuery.CanvasLoader/issues"
   },
-  "homepage": "https://github.com/emma-strumpf/jQuery.CanvasLoader",
+  "homepage": "https://github.com/orianda/jQuery.CanvasLoader",
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-contrib-cssmin": "^0.10.0",

@@ -37,13 +37,11 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask('build', 'Build project for distribution', ['jshint','uglify','cssmin']);
-
-    grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-available-tasks');
 
-    grunt.registerTask('default', ['availabletasks']);
+    grunt.registerTask('build', 'Build project for distribution', ['jshint','uglify','cssmin']);
     grunt.registerTask('default', ['availabletasks']);
 };
