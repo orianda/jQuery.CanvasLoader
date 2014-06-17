@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>jQuery.CanvasLoader</title>
+	<link rel="stylesheet" type="text/css" href="index.css"/>
+	<script type="text/javascript" src="../bower_components/CanvasLoader/js/heartcode-canvasloader.js"></script>
+	<script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="index.js"></script>
+	<script type="text/javascript">
+		jQuery(function ($) {
+			"use strict";
+
+			var element = $('<div></div>').css({
+				width: 500,
+				height: 500
+			}).appendTo('body');
+
+			/**
+			 * Display canvas loader
+			 */
+			element.canvasLoader({
+				color: '#ff0000'
+			});
+
+			/**
+			 * Remove canvas loader on the origin event
+			 */
+			element.stopCanvasLoader();
+
+			/**
+			 * Remove canvas loader by event if the origin element object is not available
+			 */
+			element.trigger('stop.canvasLoader');
+
+			/**
+			 * Manipulate default options
+			 */
+			$.fn.canvasLoader.options.color = '#0000ff'
+
+		});
+	</script>
+</head>
+<body></body>
+</html>

@@ -1,0 +1,19 @@
+.canvasLoader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    background-color: rgba(247, 247, 247, .5);
+}
+
+.canvasLoader div {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+
+.canvasLoader canvas {
+    display: block;
+}

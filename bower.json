@@ -1,0 +1,31 @@
+{
+  "name": "jQuery.CanvasLoader",
+  "version": "1.0.1",
+  "homepage": "https://github.com/emma-strumpf/jQuery.CanvasLoader",
+  "authors": [
+    "Orianda <orianda@paan.de>",
+    "Sebastian Richter <sebastian.richter@crobo.com>"
+  ],
+  "description": "jQuery wrapper for heartcodes CanvasLoader",
+  "main": "src/index.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "jQuery",
+    "heartcodes",
+    "CanvasLoader"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "CanvasLoader": "~0.9.1"
+  }
+}

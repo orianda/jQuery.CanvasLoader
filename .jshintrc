@@ -1,0 +1,21 @@
+{
+    "bitwise": true,
+    "camelcase": true,
+    "eqeqeq": true,
+    "forin": true,
+    "freeze": true,
+    "noarg": true,
+    "noempty": true,
+    "nonew": true,
+    "undef": true,
+    "nomen": true,
+    "onevar": true,
+    "browser": true,
+    "jquery": true,
+    "immed": true,
+    "curly": true,
+    "newcap": false,
+    "globals": {
+        "jQuery": true
+    }
+}
