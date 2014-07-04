@@ -27,6 +27,21 @@ module.exports = function (grunt) {
                 }
             }
         },
+        'string-replace': {
+            dist: {
+                options: {
+                    replacements: [
+                        {
+                            pattern: '{{version}}',
+                            replacement: '<%= pkg.version %>'
+                        }
+                    ]
+                },
+                files: {
+                    'dist/index.min.js': 'dist/index.min.js'
+                }
+            }
+        },
         availabletasks: {
             tasks: {
                 options: {
@@ -40,8 +55,9 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-string-replace');
     grunt.loadNpmTasks('grunt-available-tasks');
 
-    grunt.registerTask('build', 'Build project for distribution', ['jshint','uglify','cssmin']);
+    grunt.registerTask('build', 'Build project for distribution', ['jshint', 'uglify', 'cssmin', 'string-replace']);
     grunt.registerTask('default', ['availabletasks']);
 };

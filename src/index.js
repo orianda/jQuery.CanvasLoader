@@ -61,7 +61,7 @@
             }
 
             overlay = $('<div id="' + id + '" class="canvasLoader"></div>').appendTo(capsule);
-            
+
             animator = new window.CanvasLoader(id);
             animator.setShape(options.shape);
             animator.setColor(options.color);
@@ -77,8 +77,10 @@
                 marginTop: options.diameter / -2
             });
 
-            capsule.one('stop.canvasLoader', function (event) {
-                event.preventDefault();
+            /**
+             * Stop canvas loader by event
+             */
+            capsule.one('stop.canvasLoader', function () {
                 animator.kill();
                 overlay.remove();
                 capsule.css({position: position});
@@ -86,12 +88,26 @@
         });
 
         /**
-         * Remove canvas loader overlay
-         * @return {jQuery}
+         * Reinitialize canvas loader by event
          */
-        this.stopCanvasLoader = function () {
-            return this.trigger('stop.canvasLoader');
+        this.on('start.canvasLoader', function () {
+            $(this).canvasLoader(options);
+        });
+
+        /**
+         * Switching canvas loader on or off
+         * @param {boolean} on
+         * @returns {jQuery}
+         */
+        this.canvasLoader = function (on) {
+            return this.trigger((on ? 'start' : 'stop') + '.canvasLoader');
         };
+
+        /**
+         * Make options available for manipulations
+         * @type {Object}
+         */
+        this.canvasLoader.options = options;
 
         return this;
     };
@@ -109,5 +125,11 @@
         speed: 2,
         fps: 24
     };
+
+    /**
+     * Version of the canvas loader module
+     * @type {string}
+     */
+    $.fn.canvasLoader.version = '{{version}}';
 
 })(jQuery);
