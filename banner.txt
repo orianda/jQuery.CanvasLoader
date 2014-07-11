@@ -1,0 +1,6 @@
+/*!
+ * {{name}} v{{version}}
+ *
+ * Copyright {{year}} {{author}}
+ * Licensed under the MIT License (MIT)
+ */
