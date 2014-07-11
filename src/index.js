@@ -1,6 +1,3 @@
-/**
- * Canvas loader animation and expose
- */
 (function ($) {
     "use strict";
 

@@ -1,5 +1,5 @@
 # jQuery.CanvasLoader
 
-jQuery wrapper for heartcodes CanvasLoader
+jQuery wrapper for [heartcodes CanvasLoader](/heartcode/CanvasLoader).
 
-For usage see source code of the file src/index.html
+For usage see source code of the [demo page](src/index.html).

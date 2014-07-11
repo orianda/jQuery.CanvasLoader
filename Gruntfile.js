@@ -1,45 +1,84 @@
-/*globals module*/
+/*jshint
+ strict:true,
+ node:true
+ */
+"use strict";
 
 module.exports = function (grunt) {
-    "use strict";
+    var pkg = grunt.file.readJSON('package.json');
 
     grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
+        pkg: pkg,
         jshint: {
             options: {
                 jshintrc: '.jshintrc'
             },
             files: [
-                'src/index.js'
+                'src/**/*.js'
             ]
         },
-        uglify: {
-            js: {
-                files: {
-                    'dist/index.min.js': ['src/index.js']
-                }
-            }
+        clean: {
+            dist: 'dist'
         },
-        cssmin: {
-            combine: {
-                files: {
-                    'dist/index.min.css': ['src/index.css']
+        concat: {
+            dist: {
+                expand: true,
+                cwd: 'src',
+                src: ['index.js', 'index.css'],
+                dest: 'dist',
+                options: {
+                    banner: grunt.file.read('banner.txt')
                 }
             }
         },
         'string-replace': {
             dist: {
+                expand: true,
+                cwd: 'dist',
+                src: '**/*',
+                dest: 'dist',
                 options: {
                     replacements: [
                         {
+                            pattern: '{{name}}',
+                            replacement: pkg.name
+                        },
+                        {
                             pattern: '{{version}}',
-                            replacement: '<%= pkg.version %>'
+                            replacement: pkg.version
+                        },
+                        {
+                            pattern: '{{author}}',
+                            replacement: pkg.author
+                        },
+                        {
+                            pattern: '{{year}}',
+                            replacement: new Date().getFullYear()
                         }
                     ]
-                },
-                files: {
-                    'dist/index.min.js': 'dist/index.min.js'
                 }
+            }
+        },
+        uglify: {
+            dist: {
+                expand: true,
+                cwd: 'dist',
+                src: '**/*.js',
+                dest: 'dist',
+                ext: '.min.js',
+                options: {
+                    preserveComments: 'some',
+                    sourceMap: true
+                }
+            }
+        },
+        cssmin: {
+            dist: {
+                expand: true,
+                cwd: 'dist',
+                src: '**/*.css',
+                dest: 'dist',
+                ext: '.min.css'
             }
         },
         availabletasks: {
@@ -52,12 +91,27 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
-    grunt.loadNpmTasks('grunt-string-replace');
-    grunt.loadNpmTasks('grunt-available-tasks');
+    [
+        'grunt-contrib-jshint',
+        'grunt-contrib-clean',
+        'grunt-contrib-concat',
+        'grunt-contrib-uglify',
+        'grunt-contrib-cssmin',
+        'grunt-string-replace',
+        'grunt-available-tasks'
+    ].forEach(grunt.loadNpmTasks);
 
-    grunt.registerTask('build', 'Build project for distribution', ['jshint', 'uglify', 'cssmin', 'string-replace']);
-    grunt.registerTask('default', ['availabletasks']);
+    grunt.registerTask('build', 'Build project for distribution', [
+        'jshint',
+        'clean',
+        'concat',
+        'string-replace',
+        'uglify',
+        'cssmin'
+    ]);
+
+    grunt.registerTask('default', [
+        'availabletasks'
+    ]);
+
 };

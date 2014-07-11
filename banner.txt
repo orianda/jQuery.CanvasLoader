@@ -3,4 +3,6 @@
  *
  * Copyright {{year}} {{author}}
  * Licensed under the MIT License (MIT)
+ *
+ * https://github.com/orianda/jQuery.CanvasLoader
  */

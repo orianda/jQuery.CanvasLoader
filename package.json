@@ -1,6 +1,6 @@
 {
   "name": "jQuery.CanvasLoader",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "jQuery wrapper for heartcodes CanvasLoader",
   "main": "Gruntfile.js",
   "scripts": {
@@ -15,7 +15,7 @@
     "heartbeat",
     "CanvasLoader"
   ],
-  "author": "",
+  "author": "Orianda <orianda@paan.de>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/orianda/jQuery.CanvasLoader/issues"
@@ -28,5 +28,9 @@
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-available-tasks": "^0.5.0",
     "grunt-string-replace": "^0.2.7"
+  },
+  "dependencies": {
+    "grunt-contrib-clean": "^0.5.0",
+    "grunt-contrib-concat": "^0.4.0"
   }
 }
