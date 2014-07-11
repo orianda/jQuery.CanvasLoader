@@ -1,6 +1,6 @@
 {
   "name": "jQuery.CanvasLoader",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "jQuery wrapper for heartcodes CanvasLoader",
   "main": "Gruntfile.js",
   "scripts": {
