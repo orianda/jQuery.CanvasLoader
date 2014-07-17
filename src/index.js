@@ -25,6 +25,7 @@
      * @return {jQuery}
      */
     $.fn.canvasLoader = function (options) {
+        var collection = this;
 
         /**
          * Extend given options by default ones
@@ -88,7 +89,7 @@
          * Reinitialize canvas loader by event
          */
         this.on('start.canvasLoader', function () {
-            $(this).canvasLoader(options);
+            $(collection).canvasLoader(options);
         });
 
         /**
@@ -97,7 +98,7 @@
          * @returns {jQuery}
          */
         this.canvasLoader = function (on) {
-            return this.trigger((on ? 'start' : 'stop') + '.canvasLoader');
+            return collection.trigger((on ? 'start' : 'stop') + '.canvasLoader');
         };
 
         /**
