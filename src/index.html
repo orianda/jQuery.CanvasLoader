@@ -45,24 +45,55 @@
             element.canvasLoader(true);
 
             /**
+             * Manipulate options of current canvas loader instance
+             */
+            element.canvasLoader.options[0].color = '#008000';
+
+            /**
              * Remove canvas loader by event if the origin instance is not available
              */
             $(element).trigger('stop.canvasLoader');
 
             /**
-             * Manipulate options of current canvas loader instance
-             */
-            element.canvasLoader.options.color='#008000';
-
-            /**
-             * Reactivate canvas loader by event if the origin instance is not available
+             * Activate canvas loader by event if the origin instance is not available
              */
             $(element).trigger('start.canvasLoader');
 
             /**
+             * Destroy canvas loader setup
+             * It will be destroyed and can not reactivated anymore.
+             * The configurations will be lost removed.
+             */
+            $(element).trigger('destroy.canvasLoader');
+
+            /**
+             * Define a custom options set
+             */
+            $.fn.canvasLoader.options.customOptionsSet = {
+                color: '#ffff00'
+            };
+
+            /**
+             * Enable canvas loader using a custom options set
+             */
+            $(element).canvasLoader('customOptionsSet');
+
+            /**
              * Manipulate default options
              */
-            $.fn.canvasLoader.options.color = '#0000ff';
+            $.fn.canvasLoader.options.defaults.color = '#0000ff';
+
+            /**
+             * Canvas loader starts loading by given promise
+             * and stops as soon as the deferred is resolved or rejected
+             */
+            var deferred = $.Deferred();
+            $(element).canvasLoader({
+//                start:deferred.promise()
+                start: false
+            }).canvasLoader(deferred.promise());
+            setTimeout(deferred.resolve, 3000);
+//            setTimeout(deferred.reject,3000);
 
             /**
              * Get current version.
