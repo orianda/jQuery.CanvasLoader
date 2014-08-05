@@ -84,6 +84,27 @@
             $.fn.canvasLoader.options.defaults.color = '#0000ff';
 
             /**
+             * Provide options by data attributes
+             */
+            $(element).data({
+                canvasLoaderShape: 'rect',
+                canvasLoaderColor: '#00ffff'
+            }).canvasLoader('attr');
+
+            /**
+             * Provide options by css properties
+             */
+            $(element).css({
+                'font-family': 'oval',
+                'color': '#ff00ff',
+                'line-height': '103px',
+                'letter-spacing': '71px',
+                'word-spacing': '.4px',
+                'font-size': '2px',
+                'text-indent': '26px'
+            }).canvasLoader('css');
+
+            /**
              * Canvas loader starts loading by given promise
              * and stops as soon as the deferred is resolved or rejected
              */

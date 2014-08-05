@@ -18,7 +18,25 @@
      * @returns {boolean}
      */
     function isValid(value) {
-        return !(typeof value === 'undefined' || value === null || typeof value === 'number' && isNaN(value));
+        return !(typeof value === 'undefined' || value === null || isNumber(value) && isNaN(value) || isString(value) && !value.length);
+    }
+
+    /**
+     * Is value an string
+     * @param {*} value
+     * @returns {boolean}
+     */
+    function isNumber(value) {
+        return typeof value === 'number' || value instanceof Number;
+    }
+
+    /**
+     * Is value an string
+     * @param {*} value
+     * @returns {boolean}
+     */
+    function isString(value) {
+        return typeof value === 'string' || value instanceof String;
     }
 
     /**
@@ -40,6 +58,26 @@
     }
 
     /**
+     * Transforms decimal value to hex value
+     * @param {number|string} value
+     * @returns {string}
+     */
+    function dec2hex(value) {
+        var hex = parseInt(value, 10).toString(16);
+        return hex.length > 1 ? hex : '0' + hex;
+    }
+
+    /**
+     * Transforms rgb color to hex color
+     * @param {string} value
+     * @returns {string}
+     */
+    function rgb2hex(value) {
+        var matches = $.trim(value).match(/\d+/g);
+        return matches ? '#' + dec2hex(matches[0]) + dec2hex(matches[1]) + dec2hex(matches[2]) : '';
+    }
+
+    /**
      * Get option of an options set
      * @param {string} name
      * @param {Array} configs
@@ -48,12 +86,12 @@
      */
     function getOption(name, configs, element) {
         var config, value, i, l;
+        configs = configs.concat($.fn.canvasLoader.options.defaults);
         for (i = 0, l = configs.length; i < l; i++) {
             config = isObject(configs[i]) ? configs[i] : $.fn.canvasLoader.options[configs[i]];
             if (config) {
                 value = typeof config[name] === 'function' ? config[name](element) : config[name];
                 if (isValid(value)) {
-                    window.console && window.console.log('success');
                     return value;
                 }
             }
@@ -120,7 +158,6 @@
 
                 overlay = $('<div id="' + id + '" class="canvasLoader"></div>').appendTo(capsule);
 
-                window.console && window.console.log('get color', getOption('color', collection.canvasLoader.options, capsule));
                 animator = new window.CanvasLoader(id);
                 animator.setShape(getOption('shape', collection.canvasLoader.options, capsule));
                 animator.setColor(getOption('color', collection.canvasLoader.options, capsule));
@@ -181,7 +218,6 @@
          * Make options available for manipulations
          */
         collection.canvasLoader.options = Array.prototype.slice.call(arguments);
-        collection.canvasLoader.options.push($.fn.canvasLoader.options.defaults);
 
         /**
          * Initialize canvas loader
@@ -219,7 +255,7 @@
             return element.css('font-family');
         },
         color: function (element) {
-            return element.css('color');
+            return rgb2hex(element.css('color'));
         },
         diameter: function (element) {
             return parseFloat(element.css('line-height'));
@@ -228,7 +264,7 @@
             return parseFloat(element.css('letter-spacing'));
         },
         range: function (element) {
-            return parseFloat(element.css('font-weight'));
+            return parseFloat(element.css('word-spacing'));
         },
         speed: function (element) {
             return parseFloat(element.css('font-size'));
@@ -242,7 +278,7 @@
      * Options to retrieve the configuration from data attributes of the element
      * @type {Object}
      */
-    $.fn.canvasLoader.options.data = {
+    $.fn.canvasLoader.options.attr = {
         shape: function (element) {
             return element.data('canvas-loader-shape');
         },
