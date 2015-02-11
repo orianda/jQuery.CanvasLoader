@@ -59,10 +59,10 @@
     "passfail": false,
     "white": true,
 
-    "browser": false,
-    "worker": false,
-    "jquery": false,
-    "node": true,
+    "browser": true,
+    "worker": true,
+    "jquery": true,
+    "node": false,
     "devel": true,
 
     "globals": {}
