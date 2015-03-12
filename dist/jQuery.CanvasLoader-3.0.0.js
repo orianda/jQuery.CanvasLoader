@@ -1,10 +1,11 @@
 /*!
- * jQuery.CanvasLoader v3.0.0
+ * jQuery.CanvasLoader
+ * jQuery wrapper for heartcodes CanvasLoader
  *
- * Copyright 2014 Orianda <orianda@paan.de>
- * Licensed under the MIT License (MIT)
- *
- * https://github.com/orianda/jQuery.CanvasLoader
+ * @version v3.0.0
+ * @link https://github.com/orianda/jQuery.CanvasLoader
+ * @author Orianda <orianda@paan.de>
+ * @license MIT
  */
 (function ($) {
     "use strict";

@@ -1,8 +1,9 @@
 /*!
- * {{name}} v{{version}}
+ * <%= pkg.name %>
+ * <%= pkg.description %>
  *
- * Copyright {{year}} {{author}}
- * Licensed under the MIT License (MIT)
- *
- * https://github.com/orianda/jQuery.CanvasLoader
+ * @version v<%= pkg.version %>
+ * @link <%= pkg.homepage %>
+ * @author <%= pkg.author %>
+ * @license <%= pkg.license %>
  */

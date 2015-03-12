@@ -1,8 +1,0 @@
-/*!
- * jQuery.CanvasLoader v3.0.0
- *
- * Copyright 2014 Orianda <orianda@paan.de>
- * Licensed under the MIT License (MIT)
- *
- * https://github.com/orianda/jQuery.CanvasLoader
- */.canvasLoader{position:absolute;top:0;left:0;right:0;bottom:0;overflow:hidden;background-color:rgba(247,247,247,.5)}body>.canvasLoader{position:fixed}.canvasLoader div{position:absolute;left:50%;top:50%}.canvasLoader canvas{display:block}
