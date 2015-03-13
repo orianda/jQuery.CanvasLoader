@@ -24,7 +24,7 @@ gulp.task('build:style', 'Concatenate style files into one file and prepend the 
         fs = require('fs'),
         banner = fs.readFileSync('banner.txt', 'utf8');
     return gulp.src('src/**/*.css')
-        .pipe(concat(pkg.name + '-' + pkg.version + '.css'))
+        .pipe(concat(pkg.name + '.css'))
         .pipe(header(banner, {pkg : pkg}))
         .pipe(gulp.dest('dist'));
 });
@@ -52,7 +52,7 @@ gulp.task('build:script', 'Concatenate script files into one file and prepend th
         fs = require('fs'),
         banner = fs.readFileSync('banner.txt', 'utf8');
     return gulp.src('src/**/*.js')
-        .pipe(concat(pkg.name + '-' + pkg.version + '.js'))
+        .pipe(concat(pkg.name + '.js'))
         .pipe(header(banner, {pkg : pkg}))
         .pipe(gulp.dest('dist'));
 });
