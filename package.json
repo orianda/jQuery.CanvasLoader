@@ -1,6 +1,6 @@
 {
   "name": "jQuery.CanvasLoader",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "jQuery wrapper for heartcodes CanvasLoader",
   "main": "src/index.html",
   "scripts": {
